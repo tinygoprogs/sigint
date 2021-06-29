@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "device.proto";
+package wifi;
+message Ack {
+  int32 nDataPoints = 1;
+  int32 nDevices = 2;
+}
+message Devices {
+  repeated Device Devices = 1;
+}
+message HumanMapping {
+  map<string,Devices> viaName = 1;
+  //map<string,Devices> viaID = 2;
+  //...
+  float probability = 2;
+}
+service Collector {
+  rpc NewDevices (Devices) returns (Ack);
+  rpc NewMapping (HumanMapping) returns (Ack);
+}

@@ -1,0 +1,7 @@
+syntax = "proto3";
+import "datapoint.proto";
+package wifi;
+message Device {
+  string MAC = 1;
+  repeated wifi.DataPoint DataPoints = 2;
+}

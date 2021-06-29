@@ -1,0 +1,5 @@
+**~
+**.vim
+*.pb.go
+wifi/tools/wifi-to-sqlite
+.env

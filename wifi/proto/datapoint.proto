@@ -1,0 +1,12 @@
+syntax = "proto3";
+package wifi;
+message Coordinates {
+  float lon = 1;
+  float lat = 2;
+}
+message DataPoint {
+  uint32 Signal = 1; // actually int8, var-int encoding will do
+  uint32 Frequency = 2;
+  uint64 TimeStamp = 3; // since epoc in nanoseconds
+  Coordinates Location = 4;
+}

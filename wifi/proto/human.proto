@@ -1,0 +1,8 @@
+syntax = "proto3";
+import "device.proto";
+package wifi;
+message Human {
+  string Name = 1;
+  //string ID = 2; // XXX: unique identification is a big problem
+  repeated Device Devices = 2;
+}

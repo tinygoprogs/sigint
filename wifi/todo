@@ -1,0 +1,21 @@
+ - manually create testdata/ to avoid information disclosure
+
+ -  how to use usb plugged wifi dongle w/o root?
+    i)  can we use the group AID_NET_RAW to use tcpdump as app?
+    ii) must we write a hal service?
+
+ -  only @ target-2: wifi cannot switch channel: -EBUSY
+
+ -  easier on-device testing than manual:
+    ndk=path/to/ndk
+    C="$ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android28-clang" LD="$ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android28-ld" CGO_CFLAGS="--sysroot=$ndk/platforms/android-28/arch-arm64 -fPIC -I$ndk/sysroot/usr/include -I$ndk/sysroot/usr/include/aarch64-linux-android" CGO_LDFLAGS="--sysroot=$ndk/platforms/android-28/arch-arm64 -L$ndk/platforms/android-28/arch-arm64/usr/lib" /usr/lib/go-1.11/bin/go build -ldflags="-extldflags \"--sysroot=$ndk/platforms/android-28/arch-arm64 -L$ndk/platforms/android-28/arch-arm64/usr/lib\"" tools/testlocation.go
+
+ -  Write a test case for InterestingLayers.ToDevice
+
+ -  Understand FromDS/ToDS flags:
+  Who is sending the frame? Have to know for signal strength assignment.
+
+ -  optimization:
+  i)  use Lazy + NoCopy in google/pcap library
+  ii) use a eBPF to reduce packet parsing see 'Man pcap-filter' '/wlan [tr]a'
+      -> https://github.com/cilium/ebpf
